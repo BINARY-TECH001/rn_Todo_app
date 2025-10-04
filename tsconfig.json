@@ -3,4 +3,6 @@
   "compilerOptions": {
     "strict": true
   }
+  ,
+  "include": ["declarations/**/*.d.ts", "**/*.ts", "**/*.tsx"]
 }
