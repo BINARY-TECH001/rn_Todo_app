@@ -7,6 +7,8 @@ interface TaskState {
   tasks: Task[];
   addTask: (task: Omit<Task, "id" | "completed">) => void;
   toggleComplete: (id: number) => void;
+  removeTask: (id: number) => void;
+  updateTask: (id: number, updates: Partial<Omit<Task, "id">>) => void;
 }
 
 export const useTaskStore = create<TaskState>()(
@@ -24,12 +26,17 @@ export const useTaskStore = create<TaskState>()(
             task.id === id ? { ...task, completed: !task.completed } : task
           ),
         }),
+      removeTask: (id) =>
+        set({ tasks: get().tasks.filter((task) => task.id !== id) }),
+      updateTask: (id, updates) =>
+        set({
+          tasks: get().tasks.map((task) =>
+            task.id === id ? { ...task, ...updates } : task
+          ),
+        }),
     }),
     {
       name: "task-storage",
-      // createJSONStorage wraps AsyncStorage and provides the correct
-      // types for zustand's persist storage while handling JSON
-      // serialization/deserialization automatically.
       storage: createJSONStorage(() => AsyncStorage),
     }
   )
