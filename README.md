@@ -68,7 +68,6 @@ todo-app/
 The app's design is inspired by a mockup from the Figma community. Below is the reference image:
 
 ![Todo App Mockup](assets/todo.png)  
-*(Note: Replace `assets/todo.png` with the actual file path or URL of the image you uploaded from Figma. To add the image, place it in the project root or a `assets/` folder and update the path accordingly, e.g., `assets/add-new-task.png`.)*
 
 ## Deployment
 - Use Expo's EAS (Expo Application Services) to build and distribute the app.
@@ -85,15 +84,3 @@ This project is for evaluation purposes only and does not have an open-source li
 - This app was developed on October 04, 2025, at 10:22 AM WAT as part of the PayPetal React Native role test.
 - Ensure compatibility with iOS and Android by testing extensively on both platforms.
 ```
-
-### Instructions for Adding the Image
-1. **Upload the Image:** If you haven't already, upload the Figma community image to your project directory (e.g., create an `assets/` folder and save it as `todo-mockup.png`).
-2. **Update the Path:** Replace `assets/todo.png` in the `![Todo App Mockup](assets/todo.png)` line with the actual relative path, e.g., `![Todo App Mockup](assets/todo.png)`.
-3. **Commit the File:** Add the image and updated `README.md` to your repository.
-
-### Verification
-- **Content Check:** Ensure the README includes all sections (Features, Technologies, Installation, etc.) and mentions the PayPetal role test and date.
-- **Image Placeholder:** Confirm the image placeholder is correctly formatted; replace it with the actual image path after uploading.
-- **Formatting:** Verify the Markdown renders well (e.g., code blocks, headers) in a Markdown viewer or GitHub.
-
-This `README.md` provides a comprehensive overview of your app while meeting your requirements. Let me know if you need adjustments or help with the image integration!
