@@ -305,7 +305,7 @@ function AddTaskScreen() {
               color={colors.text}
               background={colors.card}
               accessibilityLabel="Notes input"
-              blurOnSubmit={true} // Optional: Dismiss keyboard on "Done"
+              blurOnSubmit={true}
             />
           </Content>
           <SaveButton
