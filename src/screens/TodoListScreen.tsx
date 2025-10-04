@@ -11,7 +11,8 @@ import { TaskItem } from "../components/TaskItem";
 
 
 function TodoListScreen() {
-  const navigation = useNavigation();
+  // Use a permissive navigation type for now so navigate('AddTask') is allowed
+  const navigation = useNavigation<any>();
   const colors = useColors();
   const tasks = useTaskStore((state) => state.tasks);
 
@@ -79,20 +80,20 @@ const BackButton = styled.TouchableOpacity`
 
 const DateText = styled.Text<{ color: string }>`
   font-size: 14px;
-  color: ${({ color }) => color};
+  color: ${({ color }: { color: string }) => color};
 `;
 
 const Title = styled.Text<{ color: string }>`
   font-size: 24px;
   font-weight: bold;
-  color: ${({ color }) => color};
+  color: ${({ color }: { color: string }) => color};
   margin-top: 4px;
 `;
 
 const SectionHeader = styled.Text<{ color: string }>`
   font-size: 18px;
   font-weight: bold;
-  color: ${({ color }) => color};
+  color: ${({ color }: { color: string }) => color};
   margin-top: 16px;
   margin-bottom: 8px;
 `;
@@ -101,7 +102,7 @@ const AddButton = styled.TouchableOpacity<{ background: string }>`
   margin: 16px;
   padding: 16px;
   border-radius: 24px;
-  background-color: ${({ background }) => background};
+  background-color: ${({ background }: { background: string }) => background};
   align-items: center;
 `;
 

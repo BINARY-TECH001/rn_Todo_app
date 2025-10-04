@@ -8,7 +8,26 @@ import { useNavigation } from "@react-navigation/native";
 import { useTaskStore } from "../store/taskStore";
 import { useColors } from "../theme/color";
 import { Task } from "../types/tasks";
+import { format } from "date-fns";
 
+// Define category icons and colors locally
+const categoryIcons: Record<Task["category"], string> = {
+  note: "note-outline",
+  event: "calendar-outline",
+  goal: "trophy-outline",
+};
+
+const categoryColors: Record<Task["category"], string> = {
+  note: "#AEC6CF",
+  event: "#D7BDE2",
+  goal: "#F7DC6F",
+};
+
+// Define a new styled Text for Picker content
+// const PickerText = styled.Text<{ color: string }>`
+//   font-size: 16px;
+//   color: ${({ color }) => color};
+// `;
 
 function AddTaskScreen() {
   const navigation = useNavigation();
@@ -28,8 +47,8 @@ function AddTaskScreen() {
     addTask({
       title,
       category,
-    //   date: date ? format(date, "yyyy-MM-dd") : "",
-    //   time: time ? format(time, "HH:mm") : "",
+      date: date ? format(date, "yyyy-MM-dd") : "",
+      time: time ? format(time, "HH:mm") : "",
       notes,
     });
     navigation.goBack();
@@ -96,9 +115,9 @@ function AddTaskScreen() {
               onPress={() => setShowDatePicker(true)}
               background={colors.card}
             >
-              <Text style={{ color: colors.text }}>
+              <PickerText color={colors.text}>
                 {date ? format(date, "yyyy-MM-dd") : "Date"}
-              </Text>
+              </PickerText>
               <MaterialCommunityIcons
                 name="calendar"
                 size={20}
@@ -120,9 +139,9 @@ function AddTaskScreen() {
               onPress={() => setShowTimePicker(true)}
               background={colors.card}
             >
-              <Text style={{ color: colors.text }}>
+              <PickerText color={colors.text}>
                 {time ? format(time, "HH:mm") : "Time"}
-              </Text>
+              </PickerText>
               <MaterialCommunityIcons
                 name="clock"
                 size={20}
@@ -178,7 +197,7 @@ const CloseButton = styled.TouchableOpacity`
 const Title = styled.Text<{ color: string }>`
   font-size: 20px;
   font-weight: bold;
-  color: ${({ color }) => color};
+  color: ${({ color }: { color: string }) => color};
 `;
 
 const Content = styled.View`
@@ -187,15 +206,15 @@ const Content = styled.View`
 
 const Label = styled.Text<{ color: string }>`
   font-size: 14px;
-  color: ${({ color }) => color};
+  color: ${({ color }: { color: string }) => color};
   margin-bottom: 8px;
 `;
 
 const Input = styled.TextInput<{ color: string; background: string }>`
   padding: 12px;
   border-radius: 8px;
-  background-color: ${({ background }) => background};
-  color: ${({ color }) => color};
+  background-color: ${({ background }: { background: string }) => background};
+  color: ${({ color }: { color: string }) => color};
   margin-bottom: 16px;
 `;
 
@@ -214,8 +233,8 @@ const CategoryButton = styled.TouchableOpacity<{
   border-radius: 24px;
   justify-content: center;
   align-items: center;
-  background-color: ${({ background }) => background};
-  opacity: ${({ selected }) => (selected ? 1 : 0.5)};
+  background-color: ${({ background }: { background: string }) => background};
+  opacity: ${({ selected }: { selected: boolean }) => (selected ? 1 : 0.5)};
 `;
 
 const Row = styled.View`
@@ -229,7 +248,7 @@ const PickerButton = styled.TouchableOpacity<{ background: string }>`
   align-items: center;
   padding: 12px;
   border-radius: 8px;
-  background-color: ${({ background }) => background};
+  background-color: ${({ background }: { background: string }) => background};
 `;
 
 const NotesInput = styled(Input)`
@@ -241,7 +260,7 @@ const SaveButton = styled.TouchableOpacity<{ background: string }>`
   margin: 16px;
   padding: 16px;
   border-radius: 24px;
-  background-color: ${({ background }) => background};
+  background-color: ${({ background }: { background: string }) => background};
   align-items: center;
 `;
 
@@ -249,6 +268,11 @@ const ButtonText = styled.Text`
   color: #ffffff;
   font-size: 16px;
   font-weight: bold;
+`;
+
+const PickerText = styled.Text<{ color: string }>`
+  font-size: 16px;
+  color: ${({ color }: { color: string }) => color};
 `;
 
 export { AddTaskScreen };

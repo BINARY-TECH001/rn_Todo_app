@@ -6,10 +6,13 @@ import { Task } from "../types/tasks";
 import { useColors } from "../theme/color";
 
 
-const categoryIcons: Record<Task["category"], string> = {
-  note: "note-outline",
-  event: "calendar-outline",
-  goal: "trophy-outline",
+// Use the icon name type from MaterialCommunityIcons for stronger typing
+type MCIIconName = React.ComponentProps<typeof MaterialCommunityIcons>['name'];
+
+const categoryIcons: Record<Task['category'], MCIIconName> = {
+  note: 'note-outline',
+  event: 'calendar-outline',
+  goal: 'trophy-outline',
 };
 
 const categoryColors: Record<Task["category"], string> = {
