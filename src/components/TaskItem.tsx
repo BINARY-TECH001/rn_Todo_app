@@ -63,9 +63,9 @@ const Container = styled.View<{ background: string; borderColor: string }>`
   padding: 16px;
   margin-bottom: 8px;
   border-radius: 8px;
-  background-color: ${({ background }) => background};
+  background-color: ${({ background }: { background: string }) => background};
   border-width: 1px;
-  border-color: ${({ borderColor }) => borderColor};
+  border-color: ${({ borderColor }: { borderColor: string }) => borderColor};
 `;
 
 const IconContainer = styled.View<{ background: string }>`
@@ -74,7 +74,7 @@ const IconContainer = styled.View<{ background: string }>`
   border-radius: 20px;
   justify-content: center;
   align-items: center;
-  background-color: ${({ background }) => background};
+  background-color: ${({ background }: { background: string }) => background};
 `;
 
 const Content = styled.View`
@@ -85,12 +85,12 @@ const Content = styled.View`
 const Title = styled.Text<{ color: string }>`
   font-size: 16px;
   font-weight: bold;
-  color: ${({ color }) => color};
+  color: ${({ color }: { color: string }) => color};
 `;
 
 const Time = styled.Text<{ color: string }>`
   font-size: 14px;
-  color: ${({ color }) => color};
+  color: ${({ color }: { color: string }) => color};
 `;
 
 const Checkbox = styled(TouchableOpacity)`

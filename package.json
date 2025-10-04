@@ -3,10 +3,11 @@
   "version": "1.0.0",
   "main": "index.ts",
   "scripts": {
-    "start": "expo start",
+  "start": "expo start",
     "android": "expo start --android",
     "ios": "expo start --ios",
-    "web": "expo start --web"
+  "web": "expo start --web",
+  "smoke:persist": "node -r ts-node/register scripts/smoke-persist.ts"
   },
   "dependencies": {
     "@expo/vector-icons": "^15.0.2",

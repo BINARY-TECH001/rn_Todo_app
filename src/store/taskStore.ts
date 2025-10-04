@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { persist } from "zustand/middleware";
+import { persist, createJSONStorage } from "zustand/middleware";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Task } from "../types/tasks";
 
@@ -27,11 +27,10 @@ export const useTaskStore = create<TaskState>()(
     }),
     {
       name: "task-storage",
-      storage: {
-        getItem: AsyncStorage.getItem,
-        setItem: AsyncStorage.setItem,
-        removeItem: AsyncStorage.removeItem,
-      },
+      // createJSONStorage wraps AsyncStorage and provides the correct
+      // types for zustand's persist storage while handling JSON
+      // serialization/deserialization automatically.
+      storage: createJSONStorage(() => AsyncStorage),
     }
   )
 );
